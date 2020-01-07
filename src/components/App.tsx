@@ -5,26 +5,20 @@ import Header from './Header';
 import Options from './Options';
 
 export default class App extends React.Component<any, any> {
-  constructor(props : {}) {
-    super(props);
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.state = {
-      options: []
-    };
-  }
-  handleDeleteOptions() {
+  state : any = {
+    options: []
+  };
+
+  handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   }
-  handleDeleteOption(optionToRemove: any) {
+  handleDeleteOption = (optionToRemove: any) => {
     this.setState((prevState : any) => ({
       options: prevState.options.filter((option: any) => optionToRemove !== option.option)
     }));
   }
-  handlePick() {
-    const unPickedOptions = this.state.options.filter((option : any) => {
+  handlePick = () =>{
+    const unPickedOptions : any = this.state.options.filter((option : any) => {
       return !option.isPicked
     });
     console.log(unPickedOptions);
@@ -42,7 +36,7 @@ export default class App extends React.Component<any, any> {
      }
   }
 
-  handleAddOption(optionToAdd: any) {
+  handleAddOption = (optionToAdd: any) => {
     if (!optionToAdd) {
       return 'Enter valid value to add item';
     } else {
